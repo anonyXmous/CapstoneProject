@@ -39,6 +39,8 @@ from (
       from tutorial.yammer_experiments exp
           join tutorial.yammer_events eve
           on   exp.user_id = eve.user_id
+      where eve.occurred_at between to_date('2014-06-01 00:00:00','yyyy-mm-dd hh24:mi:ss') 
+                                and to_date('2014-06-30 23:59:59','yyyy-mm-dd hh24:mi:ss')
       group by exp.experiment, 
           exp.experiment_group,
           exp.user_id,
@@ -54,5 +56,6 @@ order by  experiment,
           event_name,
           event_type,
           experiment_group;
+
 
 
